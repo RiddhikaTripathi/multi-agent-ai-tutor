@@ -2,21 +2,20 @@ from agents.gemini import generate_response
 
 def calculator_tool(expression: str) -> str:
     try:
-        # Only allow digits, spaces, and basic math symbols
-        allowed = set("0123456789+-*/(). ")
-        if all(char in allowed for char in expression):
+        # Only evaluate if the expression has digits and math symbols (no letters)
+        allowed_chars = set("0123456789+-*/(). ")
+        if all(char in allowed_chars for char in expression):
             result = eval(expression)
             return f"The result is {result}"
-        else:
-            return None
     except:
-        return None
+        pass
+    return None
 
 def math_agent(query: str) -> str:
-    # Try to evaluate simple math expressions
-    calculated = calculator_tool(query)
-    if calculated:
-        return calculated
-    
-    # Otherwise, ask Gemini to handle it
-    return generate_response(f"Please solve this math question: {query}")
+    # Strip query of spaces for validation (optional)
+    simple_math_result = calculator_tool(query)
+    if simple_math_result:
+        return simple_math_result
+
+    # If not evaluable, let Gemini solve it
+    return generate_response(f"Can you help with this math problem: {query}")
