@@ -1,15 +1,28 @@
 from agents.math_agent import math_agent
 from agents.physics_agent import physics_agent
+from agents.gemini import generate_response
+
+def classify_subject(query: str) -> str:
+    prompt = f"""
+You are an intelligent AI that classifies questions into subjects. 
+
+Classify the following query into one of the following categories:
+- "math"
+- "physics"
+- "unknown"
+
+Query: "{query}"
+Respond with only one word: math, physics, or unknown.
+"""
+    classification = generate_response(prompt).lower().strip()
+    return classification
 
 def tutor_agent(query: str) -> str:
-    query_lower = query.lower()
+    subject = classify_subject(query)
 
-    math_keywords = ["math", "solve", "equation", "+", "-", "*", "/", "^"]
-    physics_keywords = ["physics", "force", "law", "velocity", "constant", "mass", "acceleration","gravity"]
-
-    if any(keyword in query_lower for keyword in math_keywords):
+    if subject == "math":
         return math_agent(query)
-    elif any(keyword in query_lower for keyword in physics_keywords):
+    elif subject == "physics":
         return physics_agent(query)
     else:
         return (
