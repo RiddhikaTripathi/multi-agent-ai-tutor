@@ -8,13 +8,10 @@ def calculator_tool(expression: str) -> str:
             return f"The result is {result}"
     except:
         pass
-    return None  # Explicitly return None if eval fails or contains other characters
+    return None
 
 def math_agent(query: str) -> str:
-    # Try simple math first
     simple_result = calculator_tool(query)
     if simple_result:
         return simple_result
-    
-    # For anything else (like algebra), delegate to Gemini
     return generate_response(f"Solve this math question step-by-step: {query}")
