@@ -32,17 +32,19 @@ Chemistry Agent: Handles chemistry-related queries, such as chemical formulas an
 
 ## ⚙️ Project Structure
 
+```
 multi-agent-ai-tutor/
 ├── agents/
-│ ├── gemini.py # Gemini API helper
-│ ├── math_agent.py # Math Agent with calculator tool
-│ ├── physics_agent.py # Physics Agent with constants lookup
-│ ├── chemistry_agent.py # Chemistry Agent
-│ └── tutor_agent.py # Routes queries to the correct agent
-├── main.py # FastAPI app entry point
-├── requirements.txt # Dependencies
-├── .env # API key file (not tracked)
-└── README.md # Project documentation
+│   ├── gemini.py            # Gemini API helper
+│   ├── math_agent.py        # Math Agent with calculator tool
+│   ├── physics_agent.py     # Physics Agent with constants lookup
+│   ├── chemistry_agent.py   # Chemistry Agent
+│   └── tutor_agent.py       # Routes queries to the correct agent
+├── main.py                  # FastAPI app entry point
+├── requirements.txt         # Dependencies
+├── .env                     # API key file (not tracked)
+└── README.md                # Project documentation
+```
 
 ---
 
@@ -107,17 +109,7 @@ Visit: http://localhost:8000/docs to try the API.
 - Deployed on **Railway**
 - Environment variable set as `GEMINI_API_KEY`
 - Public API docs available at:  
-  🔗 [https://multi-agent-ai-tutor-production.up.railway.app/docs](https://multi-agent-ai-tutor-production.up.railway.app/docs)
-
----
-
-## 📄 Assignment Objectives (Completed)
-
-- ✅ Multi-agent architecture (Tutor + sub-agents)
-- ✅ Tool usage (calculator, constant lookup)
-- ✅ Gemini API for intelligent routing & replies
-- ✅ Deployed on Railway
-- ✅ Well-documented GitHub repository
+  🔗 [https://multiagentaitutor-production.up.railway.app/docs](https://multiagentaitutor-production.up.railway.app/docs)
 
 ---
 
