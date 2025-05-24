@@ -5,7 +5,7 @@ def tutor_agent(query: str) -> str:
     query_lower = query.lower()
 
     math_keywords = ["math", "solve", "equation", "+", "-", "*", "/", "^"]
-    physics_keywords = ["physics", "force", "law", "velocity", "constant", "mass", "acceleration"]
+    physics_keywords = ["physics", "force", "law", "velocity", "constant", "mass", "acceleration","gravity"]
 
     if any(keyword in query_lower for keyword in math_keywords):
         return math_agent(query)
