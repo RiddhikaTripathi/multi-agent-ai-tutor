@@ -2,7 +2,7 @@ from agents.gemini import generate_response
 
 def calculator_tool(expression: str) -> str:
     try:
-        # Evaluate only if the expression has only digits and math operators
+        # Only evaluate if the expression has only digits and math operators
         allowed_chars = set("0123456789+-*/(). ")
         if all(char in allowed_chars for char in expression):
             result = eval(expression)
